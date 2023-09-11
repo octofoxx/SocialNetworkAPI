@@ -14,7 +14,8 @@ const {
 
 // api/users route
 router.route('/')
-.get(getUsers).post(createUser);
+.get(getUsers)
+.post(createUser);
 
 // api/users/:userId routes
 router.route('/:userId')
