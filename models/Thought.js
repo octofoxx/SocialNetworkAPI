@@ -21,6 +21,7 @@ const ReactionSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
+      get:(timeStamp) => new Date(timeStamp).toLocaleString(),
     },
   },
   {
@@ -43,6 +44,7 @@ const ThoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
+      get:(timeStamp) => new Date(timeStamp).toLocaleString(),
     },
 
     username: {
@@ -53,7 +55,7 @@ const ThoughtSchema = new Schema(
   },
   {
     toJSON: {
-      virtuals: true,
+      getters: true,
     },
     id: false,
   }
