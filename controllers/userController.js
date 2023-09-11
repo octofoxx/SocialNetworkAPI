@@ -15,7 +15,7 @@ const UserController = {
     // get a single user with thoughts and friends
     async getSingleUser(req, res) {
         try {
-            const user = await User.findOne({ _id: req.params.userid })
+            const user = await User.findOne({ _id: req.params.userId })
                 .populate({ path: 'thoughts', select: '-__v' })
                 .populate({ path: 'friends', select: '-__v' });
 
@@ -44,7 +44,7 @@ const UserController = {
     async updateUser(req, res) {
         try {
             const user = await User.findOneAndUpdate(
-                { _id: req.params.userid },
+                { _id: req.params.userId },
                 { $set: req.body },
                 { runValidators: true, new: true }
             )
