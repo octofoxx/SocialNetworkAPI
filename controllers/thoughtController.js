@@ -15,7 +15,7 @@ const ThoughtController = {
     // get a single thought by id
     async getSingleThought(req, res) {
         try {
-            const thought = await User.findOne({ _id: req.params.thoughtId })
+            const thought = await Thought.findOne({ _id: req.params.thoughtId })
                 .select('-__v');
 
             if (!thought) {
@@ -67,7 +67,7 @@ const ThoughtController = {
             if (!thought) {
                 return res.status(404).json({ message: 'That thought does not exist' });
             }
-            res.json(thought);
+            res.json({message: 'Thought gone!'});
         } catch (err) {
             console.error({ message: err });
             res.status(500).json(err);
@@ -100,9 +100,9 @@ const ThoughtController = {
                 { new: true }
             )
             if (!thought) {
-                return res.status(404).json({ message: 'That thought does not exist' });
+                return res.status(404).json({ message: 'That reaction does not exist' });
             }
-            res.json(thought);
+            res.json({ message: 'Reaction removed!'});
         } catch (err) {
             console.error({ message: err });
             res.status(500).json(err);

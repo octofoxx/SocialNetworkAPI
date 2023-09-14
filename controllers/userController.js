@@ -101,7 +101,7 @@ const UserController = {
             if (!user) {
                 return res.status(404).json({ message: 'That user does not exist' })
             }
-            res.json(user);
+            res.json({ message: 'Friend removed!'});
         } catch (err) {
             console.error({ message: err });
             res.status(500).json(err);
